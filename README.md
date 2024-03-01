@@ -4,12 +4,14 @@
 
 # file structure
 
+```
 /src
   /components
     /List
   /store
   App.tsx
   index.tsx
+```
 
 # design
 
