@@ -1,18 +1,16 @@
-import { useDispatch, useSelector } from 'react-redux';
 import {
   increment,
   decrement,
   incrementByAmount,
   asyncUpFetch,
   asyncUpFetchWithArgument,
-} from '../../store/slices/counterSlice';
-import { RootState } from 'store/store';
-import { AppDispatch } from 'store/store';
+} from 'store/slices/counterSlice';
+import { useAppSelector, useAppDispatch } from 'store/store';
 
 function Counter() {
-  const dispatch: AppDispatch = useDispatch();
-  const count = useSelector((state: RootState) => state.counter.count);
-  const status = useSelector((state: RootState) => state.counter.status);
+  const dispatch = useAppDispatch();
+  const count = useAppSelector((state) => state.counter.count);
+  const status = useAppSelector((state) => state.counter.status);
 
   return (
     <div>
@@ -26,7 +24,6 @@ function Counter() {
       <button onClick={() => dispatch(asyncUpFetch())}>
         asunc Increase 10 button
       </button>
-      {/*매개변수를 받는 경우*/}
       <button onClick={() => dispatch(asyncUpFetchWithArgument(10))}>
         asunc Increase 10 button
       </button>
