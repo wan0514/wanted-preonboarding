@@ -1,44 +1,14 @@
-import React from 'react';
-import { useState } from 'react';
-import List from './components/List/List';
-import * as S from './app.style';
-
-type Todo = {
-  id: number;
-  text: string;
-};
+import { Route, Routes } from 'react-router-dom';
+import Counter from 'pages/counter/Counter';
+import Todo from 'pages/todo/Todo';
 
 function App() {
-  const [todos, setTodos] = useState<Todo[]>([]);
-  const [value, setValue] = useState('');
-
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    setValue(value);
-  };
-
-  const onSubmit = () => {
-    setTodos((prev) => [...prev, { id: prev.length + 1, text: value }]);
-    setValue('');
-  };
-
-  const onRemove = (id: number) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
-  };
-
   return (
-    <S.TodoListContainer>
-      <S.TodoInsertSection>
-        <S.TodoInput
-          type="text"
-          placeholder="todo를 적어주세요!"
-          value={value}
-          onChange={onChange}
-        />
-        <S.TodoButton onClick={onSubmit}> Add </S.TodoButton>
-      </S.TodoInsertSection>
-      {todos.length !== 0 && <List todos={todos} onRemove={onRemove}></List>}
-    </S.TodoListContainer>
+    <Routes>
+      {/* 사용법이 바뀌어서 Route는 반드시 Routes로 감싸져있어야한다. */}
+      <Route path="/" element={<Todo />}></Route>
+      <Route path="counter" element={<Counter />}></Route>
+    </Routes>
   );
 }
 
