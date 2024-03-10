@@ -1,3 +1,13 @@
+# Study Goal
+- 기존 state로만 사용해서 만들었던 todoList를 Redux와 Redux toolkit을 이용하여 상태 관리하기
+- 주요 키워드
+  - useDispatch
+  - useSelector
+  - createSlice
+  - createAsyncThunk
+  - reducer
+  - extraReducers 
+
 # Todo list
 
 기술 스택: react, typescript, styled-component
